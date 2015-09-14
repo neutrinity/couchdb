@@ -45,6 +45,7 @@ SubDirs = [
 ],
 
 DepDescs = [
+{dreyfus,           {url, "https://github.com/neutrinity/dreyfus"}, "30b0556047d54795a5b5cfe96a7bc4b75145bb06"},
 %% Independent Apps
 {config,           "config",           {tag, "1.0.3"}},
 {b64url,           "b64url",           {tag, "1.0.1"}},
@@ -56,9 +57,9 @@ DepDescs = [
 
 %% Non-Erlang deps
 {docs,             {url, "https://github.com/apache/couchdb-documentation"},
-                   {tag, "2.1.0"}, [raw]},
-{fauxton,          {url, "https://github.com/apache/couchdb-fauxton"},
-                   {tag, "v1.1.13"}, [raw]},
+                   {tag, "2.1.1"}, [raw]},
+{fauxton,          {url, "https://github.com/lucidNTR/couchdb-fauxton"},
+                   {branch, "jan/dev"}, [raw]},
 %% Third party deps
 {folsom,           "folsom",           {tag, "CouchDB-0.8.2"}},
 {ibrowse,          "ibrowse",          {tag, "CouchDB-4.0.1"}},
