@@ -171,7 +171,8 @@ def setup_configs(ctx):
             "node_name": "-name %s@127.0.0.1" % node,
             "cluster_port": cluster_port,
             "backend_port": backend_port,
-            "fauxton_root": "src/fauxton/dist/release"
+            "fauxton_root": "src/fauxton/dist/release",
+            "clouseau_name": "clouseau%d@127.0.0.1" % (idx+1)
         }
         if os.name == 'nt':
             # Erlang always wants UNIX-style paths

@@ -58,7 +58,8 @@ DepDescs = [
 {rexi,             "rexi",             "a327b7dbeb2b0050f7ca9072047bf8ef2d282833"},
 {snappy,           "snappy",           "0ab2796f82789895a2a86d403e63f3823d3c5a1d"},
 {setup,            "setup",            "d0a9b722485639fc43ccbfc4267f3a2dd9aa9d5a"},
-{meck,             "meck",             {tag, "0.8.2"}}
+{meck,             "meck",             {tag, "0.8.2"}},
+{dreyfus,           {url, "https://github.com/cloudant-labs/dreyfus"}, "5f113370a1273dd1bdc981ca3ea98767bca0382d"}
 ],
 
 BaseUrl = "https://git-wip-us.apache.org/repos/asf/",
