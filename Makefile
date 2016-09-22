@@ -15,7 +15,7 @@ include version.mk
 REBAR?=$(shell echo `pwd`/bin/rebar)
 IN_RELEASE = $(shell if [ ! -d .git ]; then echo true; fi)
 COUCHDB_VERSION_SUFFIX = $(shell if [ -d .git ]; then echo '-`git rev-parse --short --verify HEAD`'; fi)
-COUCHDB_VERSION = $(vsn_major).$(vsn_minor).$(vsn_patch)$(COUCHDB_VERSION_SUFFIX)
+COUCHDB_VERSION = $(vsn_major).$(vsn_minor).$(vsn_patch)
 
 DESTDIR=
 
@@ -233,7 +233,7 @@ dist: all
 release: all
 	@echo "Installing CouchDB into rel/couchdb/ ..."
 	@rm -rf rel/couchdb
-	@$(REBAR) generate > /dev/null 2>&1 # make full erlang release
+	@$(REBAR) generate # make full erlang release
 
 ifeq ($(with_fauxton), 1)
 	@mkdir -p rel/couchdb/share/
