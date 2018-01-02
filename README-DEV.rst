@@ -12,18 +12,28 @@ If you're unsure what this means, ignore this document.
 Dependencies
 ------------
 
-You may need:
+You need the following to run tests:
+
+* `Python                 <https://www.python.org/>`_
+* `nose                   <https://nose.readthedocs.io/en/latest/>`_
+* `requests               <http://docs.python-requests.org/>`_
+* `hypothesis             <https://pypi.python.org/pypi/hypothesis>`_
+
+You need the following optionally to build documentation:
 
 * `Sphinx                 <http://sphinx.pocoo.org/>`_
-* `LaTex                  <http://www.latex-project.org/>`_
-* `GNU Texinfo            <http://www.gnu.org/software/texinfo/>`_
 * `GNU help2man           <http://www.gnu.org/software/help2man/>`_
 * `GnuPG                  <http://www.gnupg.org/>`_
+
+You need the following optionally to build releases:
+
 * `md5sum                 <http://www.microbrew.org/tools/md5sha1sum/>`_
 * `sha1sum                <http://www.microbrew.org/tools/md5sha1sum/>`_
 
-The first of these optional dependencies are required for building the
-documentation. The last three are needed to build releases.
+You need the following optionally to build Fauxton:
+
+* `nodejs                 <http://nodejs.org/>`_
+* `npm                    <https://www.npmjs.com/>`_               
 
 You will need these optional dependencies installed if:
 
@@ -36,7 +46,7 @@ However, you do not need them if:
 * You don't care about building the documentation
 
 If you intend to build Fauxton, you will also need to install its
-dependencies. After running ./configure to download all of the
+dependencies. After running ``./configure`` to download all of the
 dependent repositories, you can read about required dependencies in
 `src/fauxton/readme.md`. Typically, installing npm and node.js are
 sufficient to enable a Fauxton build.
@@ -49,17 +59,16 @@ Debian-based (inc. Ubuntu) Systems
 
 ::
 
-    sudo apt-get install help2man python-sphinx \
-        texlive-latex-base texlive-latex-recommended \
-        texlive-latex-extra texlive-fonts-recommended texinfo gnupg
+    sudo apt-get install help2man python-sphinx gnupg nodejs npm \
+         python-hypothesis python-requests python-nose
 
 Gentoo-based Systems
 ~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    sudo emerge texinfo gnupg coreutils pkgconfig help2man
-    sudo USE=latex emerge sphinx
+    sudo emerge gnupg coreutils pkgconfig help2man sphinx python
+    sudo pip install hypothesis requests nose
 
 RedHat-based (Fedora, Centos, RHEL) Systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,7 +76,8 @@ RedHat-based (Fedora, Centos, RHEL) Systems
 ::
 
     sudo yum install help2man python-sphinx python-docutils \
-        python-pygments texlive-latex texlive-latex-fonts texinfo gnupg
+        python-pygments gnupg nodejs npm python-nose python-requests \
+        python-hypothesis
 
 Mac OS X
 ~~~~~~~~
@@ -79,7 +89,7 @@ Unless you want to install the optional dependencies, skip to the next section.
 
 Install what else we can with Homebrew::
 
-    brew install help2man gnupg md5sha1sum
+    brew install help2man gnupg md5sha1sum node spidermonkey
 
 If you don't already have pip installed, install it::
 
@@ -87,19 +97,15 @@ If you don't already have pip installed, install it::
 
 Now, install the required Python packages::
 
-    sudo pip install sphinx
-    sudo pip install docutils
-    sudo pip install pygments
-
-Download `MacTeX <http://www.tug.org/mactex/>`_ and follow the instructions 
-to get a working LaTeX install on your system.
+    sudo pip install sphinx docutils pygments nose requests hypothesis sphinx_rtd_theme
 
 FreeBSD
 ~~~~~~~
 
 ::
 
-    pkg install help2man texinfo gnupg py27-sphinx texlive-full tex-formats
+    pkg install help2man gnupg py27-sphinx node
+    pip install nose requests hypothesis
 
 Windows
 ~~~~~~~
@@ -118,13 +124,9 @@ If you intend to run the test suites::
 
     ./configure -c
 
-If you want to build it into different destination than `/usr/local`.:
-
-    ./configure --prefix=/<your directory path>
-
-If you don't want to build Fauxton or documentation specify ``--disable-fauxton``
-and/or ``--disable-docs`` arguments for `configure` to ignore their build and
-avoid any issues with their dependencies.
+If you don't want to build Fauxton or documentation specify
+``--disable-fauxton`` and/or ``--disable-docs`` arguments for ``configure`` to
+ignore their build and avoid any issues with their dependencies.
 
 See ``./configure --help`` for more information.
 

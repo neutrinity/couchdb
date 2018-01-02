@@ -29,7 +29,6 @@ COUCHJS = "src/couch/priv/couchjs"
 SCRIPTS = """
     test/javascript/json2.js
     test/javascript/sha1.js
-    test/javascript/oauth.js
     test/javascript/couch.js
     test/javascript/replicator_db_inc.js
     test/javascript/couch_test_runner.js
@@ -42,7 +41,7 @@ RUNNER = "test/javascript/cli_runner.js"
 
 
 def mkformatter(tests):
-    longest = max(map(len, tests))
+    longest = max([len(x) for x in tests])
     green = "\033[32m"
     red = "\033[31m"
     clear = "\033[0m"
@@ -72,7 +71,7 @@ def mkformatter(tests):
 
 def run_couchjs(test, fmt):
     fmt(test)
-    cmd = [COUCHJS, "-H", "-T"] + \
+    cmd = [COUCHJS, "--eval", "-H", "-T"] + \
             ["-u", "test/javascript/couchdb.uri"] + SCRIPTS + [test, RUNNER]
     p = sp.Popen(
         cmd,
@@ -92,13 +91,16 @@ def run_couchjs(test, fmt):
             sys.stderr.write(line)
     p.wait()
     fmt(p.returncode == 0)
+    return p.returncode
 
 
 def options():
     return [
         op.make_option("-s", "--start", metavar="FILENAME", default=None,
                        help="Start from the given filename if multiple files "
-                            "are passed")
+                            "are passed"),
+        op.make_option("-a", "--all", action="store_true", dest="all",
+                       help="Run all tests, even if one or more fail")
     ]
 
 
@@ -132,8 +134,23 @@ def main():
         tests = tmp
 
     fmt = mkformatter(tests)
+    passed = 0
+    failed = 0
     for test in tests:
-        run_couchjs(test, fmt)
+        result = run_couchjs(test, fmt)
+        if result == 0:
+            passed += 1
+        else:
+            failed += 1
+            if not opts.all:
+                break
+
+    sys.stderr.write("======================================================="
+        + os.linesep)
+    sys.stderr.write("JavaScript tests complete." + os.linesep)
+    sys.stderr.write("  Failed: {}.  Skipped or passed: {}.".format(
+        failed, passed) + os.linesep)
+    exit(failed > 0)
 
 
 if __name__ == "__main__":

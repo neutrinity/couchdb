@@ -1,6 +1,18 @@
 Apache CouchDB README
 =====================
 
++--------------------------------+------------+
+| Travis CI master build status  | |travisci| |
++--------------------------------+------------+
+| Jenkins CI master build status | |jenkins|  |
++--------------------------------+------------+
+
+.. |travisci| image:: https://travis-ci.org/apache/couchdb.svg?branch=master
+    :target: https://travis-ci.org/apache/couchdb
+
+.. |jenkins| image:: https://builds.apache.org/job/CouchDB/job/master/badge/icon
+    :target: https://builds.apache.org/blue/organizations/jenkins/CouchDB/activity
+
 Installation
 ------------
 
@@ -23,9 +35,9 @@ We have documentation:
 
     http://docs.couchdb.org/
 
-They include a changelog:
+It includes a changelog:
 
-    http://docs.couchdb.org/en/latest/changelog.html
+    http://docs.couchdb.org/en/latest/whatsnew/
 
 For troubleshooting or cryptic error messages, see:
 
@@ -56,18 +68,25 @@ Getting started with developing
 For more detail, read the README-DEV.rst file in this directory.
 
 Basically you just have to install the needed dependencies which are
-documented in the install docs and then run `./configure && make`.
+documented in the install docs and then run ``./configure && make``.
 
-You don't need to run `make install` after compiling, just use
-`./dev/run` to spin up three nodes. You can add haproxy as a caching
-layer in front of this cluster by running `./dev/run --with-haproxy
---haproxy=/path/to/haproxy` . You will now have a local cluster
-listening on port `5984`.
+You don't need to run ``make install`` after compiling, just use
+``./dev/run`` to spin up three nodes. You can add haproxy as a caching
+layer in front of this cluster by running ``./dev/run --with-haproxy
+--haproxy=/path/to/haproxy`` . You will now have a local cluster
+listening on port 5984.
 
 For Fauxton developers fixing the admin-party does not work via the button in
-Fauxton. To fix the admin party you have to run `./dev/run` with the `admin`
-flag, e.g. `./dev/run --admin=username:password`. If you want to have an
+Fauxton. To fix the admin party you have to run ``./dev/run`` with the ``admin``
+flag, e.g. ``./dev/run --admin=username:password``. If you want to have an
 admin-party, just omit the flag.
+
+Contributing to CouchDB
+-----------------------
+
+You can learn more about our contributing process here:
+
+    https://github.com/apache/couchdb/blob/master/CONTRIBUTING.md
 
 Cryptographic Software Notice
 -----------------------------
