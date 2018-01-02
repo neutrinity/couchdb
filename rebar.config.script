@@ -57,11 +57,11 @@ DepDescs = [
 %% Non-Erlang deps
 {docs,             {url, "https://github.com/apache/couchdb-documentation"},
                    {tag, "2.1.1"}, [raw]},
-{fauxton,          {url, "https://github.com/apache/couchdb-fauxton"},
-                   {tag, "v1.1.14"}, [raw]},
+{fauxton,          {url, "https://github.com/lucidNTR/couchdb-fauxton"},
+                   {branch, "jan/dev"}, [raw]},
 %% Third party deps
 {folsom,           "folsom",           {tag, "CouchDB-0.8.2"}},
-{dreyfus,           {url, "https://github.com/cloudant-labs/dreyfus"}, "30b0556047d54795a5b5cfe96a7bc4b75145bb06"},
+{dreyfus,           {url, "https://github.com/neutrinity/dreyfus"}, "30b0556047d54795a5b5cfe96a7bc4b75145bb06"},
 {ibrowse,          "ibrowse",          {tag, "CouchDB-4.0.1"}},
 {jiffy,            "jiffy",            {tag, "CouchDB-0.14.11-2"}},
 {mochiweb,         "mochiweb",         {tag, "CouchDB-2.12.0-1"}},
