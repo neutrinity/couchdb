@@ -194,6 +194,7 @@ def setup_configs(ctx):
             "backend_port": backend_port,
             "fauxton_root": fauxton_root,
             "uuid": "fake_uuid_for_dev",
+            "clouseau_name": "clouseau%d@127.0.0.1" % (idx+1),
             "_default": "",
             "compaction_daemon": "{}"
         }
