@@ -77,7 +77,7 @@ MakeDep = fun
     ({AppName, {url, Url}, Version, Options}) ->
         {AppName, ".*", {git, Url, Version}, Options};
     ({AppName, RepoName, Version}) when AppName == dreyfus ->
-        Url = "https://github.com/neutrinity/" ++ "couchdb-" ++ RepoName ++ ".git",
+        Url = "https://github.com/neutrinity/" ++ RepoName ++ ".git",
         {AppName, ".*", {git, Url, Version}};
     ({AppName, RepoName, Version}) ->
         Url = BaseUrl ++ "couchdb-" ++ RepoName ++ ".git",
