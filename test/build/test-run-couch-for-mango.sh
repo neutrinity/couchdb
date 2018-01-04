@@ -25,7 +25,7 @@ while ( [ $COUCH_STARTED -ne 0 ] ); do
 done
 
 cd src/mango/
-nosetests
+MANGO_TEXT_INDEXES=1 nosetests
 
 EXIT_STATUS=$?
 if [ ! -z "$SERVER_PID" ]; then

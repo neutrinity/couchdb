@@ -305,7 +305,10 @@ def hack_local_ini(ctx, contents):
     else:
         user, pswd = ctx['admin']
 
-    return contents + "\n%s = %s" % (user, hashify(pswd))
+    previous_line = "[admins]\n"
+    user_line = "\n%s = %s\n" % (user, hashify(pswd))
+
+    return contents.replace(previous_line, previous_line + user_line)
 
 
 def gen_password():

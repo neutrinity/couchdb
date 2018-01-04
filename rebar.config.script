@@ -61,14 +61,13 @@ DepDescs = [
                    {branch, "jan/dev"}, [raw]},
 %% Third party deps
 {folsom,           "folsom",           {tag, "CouchDB-0.8.2"}},
-{dreyfus,           {url, "https://github.com/neutrinity/dreyfus"}, "30b0556047d54795a5b5cfe96a7bc4b75145bb06"},
+{dreyfus,          "dreyfus",          {commit, "30b0556047d54795a5b5cfe96a7bc4b75145bb06"}},
 {ibrowse,          "ibrowse",          {tag, "CouchDB-4.0.1"}},
 {jiffy,            "jiffy",            {tag, "CouchDB-0.14.11-2"}},
 {mochiweb,         "mochiweb",         {tag, "CouchDB-2.12.0-1"}},
 {meck,             "meck",             {tag, "0.8.8"}}
 
 ],
-
 
 BaseUrl = "https://github.com/apache/",
 
@@ -79,6 +78,9 @@ MakeDep = fun
         {AppName, ".*", {git, Url, Version}, Options};
     ({AppName, RepoName, Version}) ->
         Url = BaseUrl ++ "couchdb-" ++ RepoName ++ ".git",
+        {AppName, ".*", {git, Url, Version}};
+    ({AppName, RepoName, Version}) when AppName == dreyfus ->
+        Url = "https://github.com/neutrinity/" ++ RepoName ++ ".git",
         {AppName, ".*", {git, Url, Version}};
     ({AppName, RepoName, Version, Options}) ->
         Url = BaseUrl ++ "couchdb-" ++ RepoName ++ ".git",
