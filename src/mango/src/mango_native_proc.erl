@@ -352,7 +352,7 @@ make_text_field_name([P | Rest], Type) ->
 
 
 validate_index_info(IndexInfo) ->
-    IdxTypes = case module_loaded(dreyfus_index) of
+    IdxTypes = case module_loaded(dreyfus_index_manager) of
         true ->
             [mango_idx_view, mango_idx_text];
         false ->
